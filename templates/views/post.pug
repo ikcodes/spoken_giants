@@ -1,0 +1,63 @@
+extends ../template
+block content
+
+	//- Used a lot in markup.
+	- var imageExists = data.post.image.exists
+	- var fullImage = data.post.image_size == 'full'
+	- var squareImage = data.post.image_size == 'square'
+	
+	- var urlTwitter = 'https://twitter.com/intent/tweet?url=https://spokengiants.com/news/post/'+data.post.slug+'&text='+data.post.title
+	- var urlFacebook = 'https://www.facebook.com/sharer/sharer.php?u=https://spokengiants.com/news/post/' + data.post.slug;
+	- var urlLinkedin = 'https://www.linkedin.com/shareArticle?mini=true&url=https://spokengiants.com/news/post/' + data.post.slug + '&title=' + data.post.title + '&summary=' + data.post.content.brief + '&source=https://spokengiants.com';
+	
+	section#post(class={'no-image': !imageExists}): .grid-container: .grid-x.align-center: .cell.small-12.large-10
+		article.post-body
+			if !data.post
+				h2 Invalid Post.
+			else
+				if imageExists
+					// POST FULL IMAGE
+					if fullImage
+						.post-image(style="background-image: url("+data.post.image.url+")")
+						
+				// POST HEADER
+				header(class={"post-header full-image": fullImage, "post-header": squareImage}).grid-x.align-middle
+					
+					// LEFT CELL
+					div(class={'cell medium-7 large-8 small-order-2 medium-order-1' : squareImage }).post-title-wrap
+						h2= data.post.title
+						.sm-underline
+						p.post-date
+							if data.post.categories && data.post.categories.length
+								each cat, i in data.post.categories
+									a.post-categories(href='/news/' + cat.key)= cat.name
+									if i < data.post.categories.length - 1
+										| , 
+							if data.post.publishedDate
+								br
+								| #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
+								
+					if imageExists
+						if squareImage
+							// RIGHT CELL
+							.cell.medium-5.large-4.small-order-1.medium-order-2
+								img.post-image-square(src=data.post.image.url)
+									
+				// BEGIN CMS CONTENT
+				!= data.post.content.full
+				// END CMS CONTENT
+				
+				hr.hide-for-medium
+				.grid-x.grid-margin-x.align-middle
+					.cell.medium-shrink.small-order-2.medium-order-1
+						a.button(href="/news")
+							i.button-icon-back.fa.fa-arrow-left
+							| Back to News
+							
+					//- Was playing around with right-aligning this.
+					.cell.medium-auto.small-order-1.medium-order-2.medium-text-left
+						ul#shareArticle
+							li Share This Article:
+							li: a(href=urlTwitter): i.fa.fa-twitter
+							li: a.facebook(href=urlFacebook): i.fa.fa-facebook
+							li: a(href=urlLinkedin): i.fa.fa-linkedin

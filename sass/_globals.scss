@@ -1,0 +1,501 @@
+// GLOBAL ELEMENTS
+//-----------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $heading-font;
+	font-weight: $bold;
+}
+
+@media only screen and (max-width: 639px) {
+	h2 {
+		font-size: 2rem;
+	}
+	h3 {
+		font-size: 1.6rem;
+	}
+	h4 {
+		font-size: 1.3rem;
+	}
+}
+
+h4,
+h5,
+h6 {
+	font-family: $body-font;
+	font-weight: bold;
+}
+
+body {
+	background-size: 50px;
+	font-family: $body-font;
+	font-weight: $body-font-weight;
+	letter-spacing: -0.25px;
+	position: relative;
+	&.signing {
+		@media screen and(min-width: 825px) {
+			position: fixed;
+			width: 100%;
+		}
+	}
+}
+a {
+	color: darken($blue, 10%);
+	&:hover,
+	&:active {
+		color: darken($blue, 20%);
+	}
+	&.underline {
+		text-decoration: underline;
+		text-decoration-color: $blue;
+		transition: all 250ms;
+		&:hover {
+			text-decoration-color: $black;
+			transition: all 250ms;
+		}
+	}
+}
+input {
+	border-radius: 4px !important;
+	border-color: $blue;
+	&:active {
+		border-color: darken($blue, 10%);
+	}
+}
+label {
+	font-weight: bold;
+	&.error {
+		color: $error-color;
+		font-weight: normal;
+		position: relative;
+		top: -1rem;
+	}
+}
+p {
+	font-size: 16px;
+}
+
+// GLOBAL CLASSES
+//-----------------
+.heading-font {
+	font-family: $heading-font;
+}
+.circle {
+	border-radius: 100%;
+}
+.button {
+	background-color: $blue;
+	border: 2.5px solid rgba($black, 0.8);
+	border-radius: 4px;
+	box-shadow: -3px 4px 0 0 $black;
+	color: $white;
+	font-family: $heading-font;
+	font-size: 16px;
+	letter-spacing: 1px;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-transform: uppercase;
+	transition: all 250ms;
+
+	&.noshadow {
+		border: none;
+		box-shadow: none;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken($blue, 10%);
+		box-shadow: -3px 4px 3px 0 $black;
+		transition: all 250ms;
+		&.noshadow {
+			border: none;
+			box-shadow: none;
+		}
+		i.button-icon {
+			right: -10px;
+			transition: right 200ms;
+		}
+		i.button-icon-back {
+			left: -8px;
+			transition: left 200ms;
+		}
+	}
+	&.hollow {
+		background-color: transparent;
+		border-color: $blue;
+		box-shadow: none;
+		color: $blue;
+		&:hover {
+			box-shadow: none;
+			border-color: darken($blue, 15%);
+			color: darken($blue, 15%);
+		}
+	}
+	&.purple {
+		background-color: $purple;
+		color: $white;
+		&:hover {
+			background-color: darken($purple, 15%);
+		}
+	}
+	i.button-icon {
+		margin-left: 5px;
+		position: relative;
+		right: -5px;
+		top: -1px;
+		transition: right 200ms;
+	}
+	i.button-icon-back {
+		margin-right: 5px;
+		left: -5px;
+		position: relative;
+		top: -1px;
+		transition: left 200ms;
+	}
+}
+
+.cta {
+	background-image: url("/images/bg-cta.jpg");
+	background-size: cover;
+	color: $white;
+	.button {
+		background-color: darken($blue, 13%);
+		border-color: rgba($white, 0.9);
+		box-shadow: none;
+		padding-left: 20px;
+		padding-right: 20px;
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: darken($blue, 10%);
+			border-color: rgba($white, 0.7);
+		}
+		@media screen and(max-width: 639px) {
+			&:first-of-type {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
+.rel {
+	position: relative;
+}
+
+.roundbottom {
+	border-radius: 0 0 6px 6px;
+}
+
+// GLOBAL ID ELEMENTS
+//--------------------
+
+#hero {
+	background-color: $black; // for bg images
+	background-image: url("/images/bg-hero.jpg");
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	@media only screen and (min-width: 640px) {
+		// background-image: url('/images/hero/sign.jpg');
+	}
+	@media only screen and (min-width: 1024px) {
+		// BIG ONLY
+		// background-image: url('/images/hero/poet-1.jpg');
+		// background-position: center left;
+		// background-size: 120%;
+		// height: 600px;	// Let padding take this.
+	}
+	h1 {
+		color: $white;
+		font-weight: 800;
+		line-height: 1;
+		text-transform: uppercase;
+		font-size: 36px;
+		padding-top: 30px;
+		@media only screen and(min-width: 640px) and(max-width: 1023px) {
+			padding-top: 50px;
+		}
+		@media only screen and (min-width: 1024px) {
+			// LG ONLY
+			font-size: 56px;
+			padding-top: 60px;
+		}
+	}
+	p {
+		color: $white;
+		// font-family: $fonta;
+		font-size: 22px;
+		margin: 10px 0 25px;
+		@media only screen and (max-width: 639px) {
+			// SMALL ONLY
+			font-size: 24px;
+		}
+	}
+	.button {
+		border-color: $white;
+		border-width: 2px;
+		color: $white;
+		font-size: 20px;
+		font-family: $fonte;
+		// font-weight: 600;
+		padding: 15px 30px;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		&:hover {
+			border-color: $white;
+			box-shadow: 5px 10px 20px $trans-dark;
+			color: $white;
+		}
+		@media only screen and (max-width: 639px) {
+			// SMALL ONLY
+			font-size: 24px;
+		}
+	}
+}
+.hero-text-container {
+	padding-top: 25px;
+	padding-bottom: 50px;
+	@media only screen and (max-width: 639px) {
+		// SMALL ONLY
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+}
+
+#nav {
+	background-color: $black;
+	color: $offwhite;
+	font-family: $heading-font;
+	height: $nav-height;
+	padding: 0;
+	position: fixed;
+	transition: top 250ms;
+	top: 0;
+	width: 100%;
+	z-index: 6669;
+	&.scrolled {
+		transition: top 250ms;
+		top: -$nav-height;
+	}
+
+	#navLogoContainer {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		z-index: 999;
+	}
+	#navLogo {
+		width: 80px;
+		padding: 10px 0 0 22px;
+	}
+	#navName {
+		padding: 26px 0 0 20px;
+		width: 110px;
+	}
+
+	// UL (w/foundation overrides)
+	.menu a {
+		color: $offwhite;
+		text-transform: uppercase;
+		&:hover {
+			color: $white;
+		}
+		@media only screen and (max-width: 800px) and (min-width: 640px) {
+			padding: 0.7rem 0.7rem;
+		}
+		&#signUpButton {
+			@media only screen and (min-width: 640px) {
+				color: $blue;
+				border: 1px solid $blue;
+				border-radius: 4px;
+				margin-left: 8px;
+				transition: $fast-trans;
+				a {
+					padding: 10px 12px;
+				}
+				&:hover {
+					border-color: $white;
+					color: $white;
+					transition: $fast-trans;
+				}
+				&.active {
+					border-color: $white;
+					color: $white;
+				}
+			}
+		}
+	}
+	.menu .active a {
+		color: $blue;
+		background-color: transparent;
+		&:hover {
+			color: darken($blue, 5%);
+		}
+	}
+	#navItems {
+		padding-top: 21px;
+		@media only screen and (max-width: 639px) {
+			// SMALL ONLY
+			font-size: 24px;
+			display: none;
+			&.open {
+				display: inline-block;
+			}
+		}
+	}
+}
+
+.sm-underline,
+.lg-underline {
+	border: 0;
+	display: block;
+	width: 50px;
+	height: 4px;
+	margin: 5px 0 10px;
+	&.green {
+		background-color: $green;
+	}
+	&.blue {
+		background-color: $blue;
+	}
+	&.gray {
+		background-color: $gray;
+	}
+	&.purple {
+		background-color: $purple;
+	}
+	&.dark-purple {
+		background-color: $dark-purple;
+	}
+}
+.sm-underline {
+	width: 50px;
+}
+.lg-underline {
+	width: 100%;
+}
+
+.raised-section {
+	background-color: $white;
+	box-shadow: $box-shadow;
+	border-radius: 12px;
+	padding: 15px 20px;
+	height: 100%;
+	p {
+		// margin-top: 10px;
+	}
+}
+
+#main {
+	background-color: $black;
+	padding-top: $nav-height;
+	@media only screen and (max-width: 639px) {
+		padding-top: $nav-height-mobile;
+	}
+}
+
+.licensingTypes {
+	background-image: url("/images/hero/pattern.jpg");
+	background-size: cover;
+	position: relative;
+	.licensingTypesCover {
+		background-color: white;
+		height: 100%;
+		position: absolute;
+		width: 100%;
+		opacity: 0.75;
+	}
+	.licensingTypesInner {
+		position: relative;
+		height: 100%;
+		width: 100%;
+		opacity: 1;
+	}
+}
+
+#footer {
+	background-color: $black;
+	color: $gray;
+	padding: 50px 0 0;
+	h4,
+	h5,
+	h6 {
+		color: $blue;
+		font-family: $heading-font;
+	}
+
+	.footer-cell-left {
+		width: 300px;
+		overflow: hidden;
+	}
+
+	// TOP
+	#footerNav {
+		margin-bottom: 30px;
+		// padding: 60px 0;
+	}
+	ul {
+		list-style: none;
+		margin: 0 0 45px;
+	}
+	li {
+		display: inline-block;
+		line-height: 2rem;
+		list-style: none;
+		padding: 0 30px 0 0;
+		a {
+			color: $gray;
+			transition: color 250ms;
+			&:hover {
+				color: $offwhite;
+				transition: color 250ms;
+			}
+		}
+	}
+
+	// BOTTOM
+	#footerLogoContainer {
+		border-radius: 10px;
+		display: inline-block;
+		/*
+		transition: all 500ms;
+		&:hover{
+			background-color: #333;
+			transition: all 500ms;
+		}
+		*/
+	}
+	#footerLogo,
+	#footerName {
+		display: inline-block;
+	}
+	#footerLogo {
+		width: 100px;
+	}
+	#footerName {
+		padding: 36px 0 0 20px;
+		width: 150px;
+	}
+	#footerBottomContent {
+		padding-top: 27px;
+	}
+	#footerCopyright {
+		color: darken($gray, 10%);
+		margin: 45px 0 15px;
+		text-align: center;
+		font-size: 12px;
+	}
+}
+
+@media screen and (min-width: 1040px) {
+	#hr-lmarg {
+		margin-left: -30px;
+		width: calc(100% + 30px);
+	}
+}

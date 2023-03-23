@@ -1,0 +1,216 @@
+extends ../template
+include ../mixins/cta
+include ../mixins/cta2
+
+block content
+	#membership
+		#licensingOverlay
+			#itemExplainers
+				// LICENSING STEP EXPLAINERS - ABS POSITIONED
+				//===========================================
+				- var lstep_index = 0;
+				each step in lsteps
+					- lstep_index++
+					.item-explainer(id="item-explainer-"+lstep_index)
+						.grid-x.align-middle.align-center: .cell.medium-9.large-6
+							+h3-noshrink(step['title'])
+							!=step['content']
+						a.button.exit-button Exit
+				#hero(style='background-image: url("'+page['image']['secure_url']+'")'): .grid-container: .grid-x
+					.cell: .hero-text-container
+						h1=page['title']
+			
+	
+		//- No longer hooked up to the CMS...
+		//- #hero(style="background-image: url('"+page['image']['secure_url']+"')"): .grid-container: .grid-x
+		#hero: .grid-container: .grid-x
+			.cell: .hero-text-container
+				h1=page['title']
+		
+		// WHAT IS A MEMBER?
+		section#whatIsaMember.white-bg.tb-pad-60.mob-t-pad-30.mob-lr-pad-10: .grid-container
+			.grid-x.align-middle
+				.cell.small-12.medium-auto
+					+h2(content[0]['title'])
+					.cms-content.tb-pad-15: !=content[0]['content']
+					p.text-right.b-marg-0.r-marg-30
+						a.button.large.r-marg-30.mob-fullwidth(href="/sign-up") Apply Online Now
+							i.button-icon.fa.fa-arrow-right
+						a.button.large.mob-fullwidth(href="/licensing") Learn About Licensing
+							i.button-icon.fa.fa-arrow-right
+				//- Fold Photo 
+				.cell.medium-5.large-4.small-12.show-for-medium: .grid-x
+					.cell.small-12: #aboutFoldPhoto
+					.cell.small-12: p.about-fold-text <strong><span class='blue'>Paris Sashay</span></strong>&nbsp;|&nbsp;Spoken Giants Member
+		
+		section#spokenGiantsLegacy.light-gray-bg.tb-pad-60.mob-t-pad-30.mob-lr-pad-10: .grid-container
+			.grid-x.align-middle
+				//- Fold Photo 
+				.cell.medium-5.large-4.small-12.show-for-medium: .grid-x
+					.cell.small-12: #aboutFoldPhoto2(style="background-image: url('/images/members/ralphie-may.jpg')")
+					.cell.small-12: p.about-fold-text <strong><span class='blue'>Estate of Ralphie May</span></strong>&nbsp;|&nbsp;Legacy Member
+					
+				//- Spoken Giants Legacy text
+				.cell.small-12.medium-auto
+					+h2(content[1]['title'])
+					.cms-content.tb-pad-15: !=content[1]['content']
+					p.b-marg-0
+						a.button.large.r-marg-30.mob-fullwidth(href="/sign-up") Apply Online Now
+							i.button-icon.fa.fa-arrow-right
+						a.button.large.mob-fullwidth(href="#workflow") Royalties and FAQs
+							i.button-icon.fa.fa-arrow-right
+			
+		
+		// GENRES WE REPRESENT
+		section#genres.white-bg.tb-pad-90.mob-tb-pad-45.mob-lr-pad-10: .grid-container
+			.grid-x.align-center.align-middle.grid-margin-x
+				.cell.medium-6.large-4
+					+h2(content[2]['title'])
+					.grid-x: .cell: !=content[2]['content']
+					
+				.cell.medium-6.large-4.large-offset-1
+					#membershipSliderWrap.mob-t-marg-30.mob-b-marg-15
+						#membershipSlider.text-center
+							.genre-we-represent 
+								h3 Comedy
+									i.fa.fa-user-o
+								p recordings &amp; live performances
+							.genre-we-represent 
+								h3 Podcasts
+									i.fa.fa-podcast
+								p or other Internet talk content
+							.genre-we-represent 
+								h3 Speeches
+									i.fa.fa-microphone
+								p composed and/or performed by yourself
+							.genre-we-represent
+								h3 Public Readings
+									i.fa.fa-book
+								p of your compositions (books, papers, etc.)
+		
+		//===================
+		// WORKFLOW SECTION
+		//===================
+		section.light-gray-bg.tb-pad-45.rel: .grid-container
+			#workflow.t-pad-15.b-pad-30: .rel: .grid-x.align-center.mob-b-pad-45
+				// LICENSING HEADER CONTENT
+				.cell.medium-8.large-5.t-pad-15.mob-t-pad-30.mob-lr-pad-10
+					.hide-for-medium
+						+h4(content[3]['title'])
+						.cms-content.t-marg-15: !=content[3]['content']
+					.show-for-medium.text-justify
+						+h3-centered(content[3]['title'])
+						.cms-content.t-marg-15: !=content[3]['content']
+				
+				// LICENSING STEPS (EXPLAINERS ABOVE)
+				.grid-x.grid-margin-x.align-center
+						- var lstep_index2 = 0;
+						each step in lsteps
+							- lstep_index2++
+							.cell.medium-6.large-4.workflow-item
+								.grid-x.grid-margin-x.align-middle
+									.cell.shrink: p.number=lstep_index2
+										<span class='period'>.</span>
+									.cell.auto.rel
+										p.step(data-workflow-id=lstep_index2)=step['title']
+										.connecting-line
+		
+		// NEW ROYALTY CHART (MOBILE)
+		section.white-bg.mob-tb-pad-30.hide-for-medium: .grid-container: .grid-x.grid-margin-x.align-center: .cell.small-10.text-center
+			+h2-centered('Copyright Royalties')
+			p.text-center For an overview of Spoken Giants&rsquo; Copyright Royalty breakdown, please view our 
+				a(target='_blank' href='/images/copyright-royalties.jpg'): strong Copyright Royalty Chart.
+		
+		// NEW ROYALTY CHART (DESKTOP)
+		section.white-bg.tb-pad-45.show-for-medium: .grid-container: .grid-x.grid-margin-x.align-center
+			.cell.medium-8.text-left
+				//- .cell.auto
+				//- .cell.shrink.text-center
+				+h2('Copyright Royalties')
+				.grid-x: .cell
+					p.show-for-medium.hide-for-large.b-marg-0(style='font-size: 18px;') Below is a breakdown of copyright royalty subdivisions, beginning at the source &mdash; the work itself.
+					p.show-for-large.b-marg-0(style='font-size: 18px;') Below is a breakdown of royalty subdivisions, beginning at the source &mdash; the work itself. For a downloadable version of this chart, please <a target='_blank' href='/assets/Spoken-Giants-Copyright-Royalty-Chart.pdf'>use this link</a>.
+			
+			.cell
+				img(src='/images/copyright-royalties.jpg')
+				.cms-content: p.text-center.b-marg-0.t-marg-15.hide-for-large(style='font-size: 14px; color: gray;') For a downloadable version of this chart, please <a target='_blank' href='/assets/Spoken-Giants-Copyright-Royalty-Chart.pdf'>use this link</a>.
+					
+		
+		// FAQs
+		section#faq.white-bg.tb-pad-45.mob-t-pad-45.mob-b-pad-30: .grid-container
+			.grid-x.align-center
+				+h2("Membership FAQs")
+			.grid-x.align-center.t-pad-30
+				.cell.large-8.medium-10
+					ul.accordion(data-accordion data-allow-all-closed='true' data-multi-expand='true')
+						- var faq_index = 0;
+						each faq in locals.faqs
+							- faq_index++
+							
+							//- Just the first expanded
+							//- li.accordion-item(class=( faq_index == 1 ? 'is-active' : '' ) data-accordion-item)
+							
+							//- All expanded
+							li.accordion-item.is-active(data-accordion-item)
+								a(href='#' class='accordion-title')=faq.question
+								.accordion-content(data-tab-content)
+									!=faq.answer
+									
+		+cta()
+		
+		// ROYALTY PAYMENTS / MEMBER SERVICES
+		section.grid-x.align-center.text-center
+			.cell.medium-6.light-gray-bg.tb-pad-60.mob-t-pad-30.mob-b-pad-15.mob-lr-pad-10: .grid-container
+				.grid-x.align-center.t-pad-15: .cell.medium-11.large-8.text-left
+					+h3(content[4]['title'])
+					!=content[4]['content']
+			
+			.cell.medium-6.white-bg.tb-pad-60.mob-t-pad-30.mob-b-pad-15.mob-lr-pad-10: .grid-container
+				.grid-x.align-center.t-pad-15: .cell.medium-11.large-8.text-left
+					+h3(content[5]['title'])
+					!=content[5]['content']
+
+block footer_js
+	script(type='text/javascript').
+		$(function(){
+			$('#membershipSlider').slick({
+				autoplay: true,
+				autoplaySpeed: 1750,
+				prevArrow: '<span class="slick-arrow alt arrow-top"><i class="fa fa-arrow-up top-arrow"></span>',
+				nextArrow: '<span class="slick-arrow alt arrow-bottom"><i class="fa fa-arrow-down bottom-arrow"></span>',
+				vertical: true,
+			});
+		
+			$('p.step').hover(function(){
+				var $step = $(this).parent().parent().parent();
+				$step.addClass('active');
+			}, function(){
+				var $step = $(this).parent().parent().parent();
+				$step.removeClass('active');
+			})
+			
+			$('p.step').click(function(){
+				var $id = $(this).data('workflow-id');
+				var $step = $(this).parent().parent().parent();
+				var $explainer = $("#item-explainer-"+$id);
+				
+				$("#licensingOverlay").addClass('active');
+				$explainer.addClass("engaged");
+				$step.addClass('active');
+			})
+			
+			$('.exit-button').click(function(){
+				$("p.step").removeClass('active');
+				$("#licensingOverlay").removeClass('active');
+				$(".item-explainer").removeClass('engaged');
+			})
+			
+			// If you can click it, it's active, and it's a problem.
+			$("#licensingOverlay").click(function(){
+				$("p.step").removeClass('active');
+				$("#licensingOverlay").removeClass('active');
+				$(".item-explainer").removeClass('engaged');
+			})
+		})
+	
+	

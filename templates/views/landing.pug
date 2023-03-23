@@ -1,0 +1,58 @@
+extends ../template-landing
+
+block head
+	
+
+block content
+	section#landingMain: .grid-container
+	
+		h1(style="display:none!important;") Spoken Giants is the first global multiple rights administration platform for spoken word.
+		
+		// BIG MIKE & THE SIGNUP GANG
+		.grid-x.grid-margin-x.align-middle.align-center
+			.cell.medium-9.large-7.align-center.text-center
+				p.no-marg: img#bigMike(src='/images/_Final/SpokenGiants-Logo_FINAL_WhiteText.png')
+				.hero-text-container
+					h3#countdown
+					
+					.hide-for-medium.grid-x.grid-margin-x.align-center: .cell.small-11
+						+h4-centered("Our website will re-launch October 26th")
+						p Spoken Giants is the first global multiple rights administration platform for spoken word!
+						p We are gearing up to formally announce the company, in conjunction with our new major partner.
+						p Members and prospective members, please utilize the links below, or <a href='mailto:membership@spokengiants.com'>contact us by email</a>.
+						
+					.show-for-medium
+						.show-for-large
+							+h2-centered("Our website will re-launch October 26th")
+						.hide-for-large
+							+h3-centered("Our website will re-launch October 26th")
+						p.text-center Spoken Giants is the first global multiple rights administration platform for spoken word! We are preparing to formally announce the company and our new major partner. Members and prospective members, please utilize the links below, or <a href='mailto:membership@spokengiants.com'>contact us by email</a>.
+					
+			
+		// RESPONSIVE CTA BUTTONS
+		.grid-x.grid-margin-x.align-middle.align-center
+			.cell.small-12.medium-6.large-4
+			
+				//- SMALL!
+				p.hide-for-medium.no-marg.text-center: a.button.hollow(style='width: 100%;' href='/get-in-touch') Contact Spoken Giants
+				p.hide-for-medium.no-marg.text-center: a.button.hollow(style='width: 100%;' href='/sign-up') New Member Signup
+				
+				//- MEDIUM!
+				p.show-for-medium.no-marg.text-right: a.button.hollow(style='width: 100%;' href='/get-in-touch') Contact Spoken Giants
+			
+			.cell.small-12.medium-6.large-4
+				p.show-for-medium.no-marg.text-left: a.button.hollow(style='width: 100%;' href='/sign-up') New Member Signup
+			
+			
+block footer_js
+	script(src="/js/countdown.min.js" type="text/javascript")
+	script(type="text/javascript").
+		$(function(){
+			var DATE_STR = "2020/10/28 11:00:00";
+			$("#countdown")
+				.countdown(DATE_STR, function(event) {	// UTC
+					$(this).text(
+						event.strftime('%D:%H:%M:%S')
+					);
+				});
+		})

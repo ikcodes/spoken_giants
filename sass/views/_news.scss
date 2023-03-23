@@ -1,0 +1,224 @@
+#news{
+	background-image: url("/images/patterns/pattern.png");
+	#hero{
+		background-image: url("/images/bg-cta.jpg");
+		background-position: top;
+		h1.no-cat{
+			padding-bottom: 20px;
+		}
+		h5{
+			color: $blue;
+			line-height: 1;
+			margin: 0;
+		}
+	}
+	
+	#categoryNav{
+		color: $white;
+		padding: 15px 0;
+		ul#navUl{
+			margin: 0;
+			@media only screen and (max-width: 639px){
+				display: none;
+			}
+		}
+		li{
+			cursor: default;
+			font-weight: bold;
+			list-style: none;
+			padding-right: 5px;
+			@media only screen and (min-width: 640px){
+				display: inline-block;
+			}
+			a{
+				color: $white;
+				&:hover, &.active{
+					color: $blue;
+				}
+			}
+		}
+		a#navTrigger{
+			color: $gray;
+			display: block;
+			transition: all 250ms;
+			&:hover{
+				color: lighten($gray, 10%);
+			}
+			&.active{
+				margin-bottom: 7px;
+				transition: all 250ms;
+			}
+		}
+	}
+	
+	#articleContainer{
+		padding: 15px 0;
+		
+		@media only screen and (max-width: 639px){	// ?
+			padding: 15px 0 30px;
+		}
+		
+		.active.bold{ // Target Current Page Number
+			background-color: $blue;
+			border-radius: 3px;
+			.pagination a, .pagination button{
+				color: $white !important;
+			}
+		}
+		
+	}
+}
+.post-preview, .post-body{
+	background-color: $white;
+	border-radius: 4px;
+	box-shadow: -5px 15px 20px 0 rgba($black, 0.1);
+	margin-bottom: 30px;
+	// padding: 15px 20px 15px;
+	padding: 22px 20px;
+	.post-date, .post-categories{
+		font-size: 1.1em;
+		line-height: 1.2;
+		letter-spacing: -0.5px;
+		margin: 5px 0 10px;
+		@media only screen and (max-width: 639px){	// ?
+			font-size: 0.95em;
+		}
+	}
+	h3 a{
+		// color: $purple;
+		// color: $blue;
+		color: $black;
+		transition: $fast-trans;
+		&:hover{
+			// color: darken($purple, 5%);
+			color: darken($blue, 30%);
+			transition: $fast-trans;
+		}
+	}
+	.post-date{
+		color: $dark-gray;
+	}
+	.post-categories{
+		// color: $link-blue;
+		// color: $purple;
+		color: $blue;
+	}
+	.button{
+		text-transform: uppercase;
+		margin: 0;
+		background-color: $blue;
+		&:hover{
+			background-color: darken($blue, 5%);
+		}
+	}
+}
+
+#post{
+	background-image: url("/images/patterns/pattern.png");
+	&.no-image{
+		padding-top: 90px;
+	}
+	.post-image{
+		background-size: cover;
+		background-position: center;
+		height: 300px;
+		margin: 0px;
+		width: 100%;
+		@media only screen and (min-width: 640px){
+			height: 360px;
+		}
+		@media only screen and (min-width: 1024px){
+			height: 420px;
+		}
+	}
+	.post-image-square{
+		float: right;
+		margin-top: -20px;
+		@media only screen and (max-width: 639px){
+			width: 100%;
+			margin-bottom: 15px;
+		}
+		@media only screen and (min-width: 640px){
+			width: 300px;	// Enforces flow, 'no matter how square it is'
+		}
+	}
+	// BEFORE CMS CONTENT
+	// -------------------
+	header.post-header{
+		background-color: $white;
+		border-radius: 6px;
+		// display: inline-block;
+		padding: 15px 15px 10px;
+		position: relative;
+		margin-left: -15px;
+		width: 100%;
+		&.full-image{
+			margin-top: -80px;
+			.post-title-wrap h2{
+				margin: 20px 0 13px;
+			}
+		}
+		.post-title-wrap{
+			font-family: $heading-font;
+			h2{
+				color: $black;
+				line-height: 1.1;
+				margin: 10vh 0 0 0;
+			}
+			.post-date{
+				margin-top: 0;
+			}
+			.sm-underline{
+				background-color: $blue;
+				margin: 10px 0 14px;
+			}
+		}
+	}
+	// CMS CONTENT
+	//-------------
+	.post-body{
+		padding-top: 25px;
+		@media only screen and (min-width: 640px){
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+		
+		// AFTER CMS CONTENT
+		//-------------------
+		hr{
+			border-color: offwhite;
+			max-width: 600px;
+			border-radius: 4px;
+			margin: 20px auto 0px 0;
+		}
+		#shareArticle{
+			display: inline-block;
+			margin: 13px 0 15px;
+			text-align: left;
+			li{
+				display: inline-block;
+				list-style-type: none;
+				a{
+					background-color: $blue;
+					border-radius: 100%;
+					border: 1.5px solid rgba($black, 0.8);
+					color: $white;
+					display: inline-block;
+					height: 30px;
+					margin-left: 4px;
+					padding-left: 7px;
+					padding-top: 1px;
+					width: 30px;
+					&.facebook{
+						padding-left: 9px;
+					}
+					&:hover, &:focus, &:active{
+						background-color: darken($blue, 3%);	
+						box-shadow: -1px 1px 4px 1px rgba($black, 0.5);
+						transition: all 250ms;
+					}
+				}
+			}
+		}
+	}
+}

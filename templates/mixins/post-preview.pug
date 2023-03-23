@@ -1,0 +1,35 @@
+mixin post-preview(post)
+	.post-preview(data-equalizer-watch="posts" data-ks-editable=editable(user, { list: 'Post', id: post.id }))
+		// Title
+		h3.no-marg: a(href='/news/post/' + post.slug)= post.title
+		// Post Date
+		p.post-date
+			// Categories
+			if post.categories && post.categories.length
+				each cat, i in post.categories
+					a.post-categories(href='/news/' + cat.key)= cat.name
+					if i < post.categories.length - 1
+						| , 
+					else
+						//- |  
+			if post.publishedDate
+				br
+				| #{post._.publishedDate.format('MMMM Do, YYYY')} 
+			
+						
+			// Author
+			//- if post.author
+				| by #{post.author.name.first}
+		.sm-underline.gray
+		
+		//- // Image
+		//- if post.image.exists
+			//- img(src=post._.image.fit(160,160))
+		
+		// Blurb
+		!=post.content.brief
+		
+		// Read More
+		if post.content.extended
+			a.button.no-marg.purple(href='/news/post/' + post.slug) Read More
+				i.button-icon.fa.fa-arrow-right

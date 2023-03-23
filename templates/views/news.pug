@@ -1,0 +1,93 @@
+extends ../template
+include ../mixins/post-preview
+
+block content
+	#news
+	
+		// HERO
+		section#hero: .grid-container: .grid-x: .cell: .hero-text-container
+			h1(class=!data.category ? 'no-cat' : false) News
+			h5=data.category ? data.category.name : ''
+		
+		// CATEGORY SUBNAV
+		if data.categories.length
+			section#categoryNav.black-bg: .grid-container: .grid-x: .cell
+				a#navTrigger.hide-for-medium &plus; Filter By Category
+				ul#navUl
+					li: a(href='/news', class=!data.category ? 'active' : false) All Categories
+					each cat in data.categories
+						li.show-for-medium |
+						li: a(href='/news/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false)= cat.name
+		
+		// POST PREVIEW CONTAINER
+		section#articleContainer
+			.grid-container: .grid-x: .cell
+				if filters.category && !data.category
+					h3 Invalid Category.
+				else
+					if data.posts.results.length
+						//- if data.posts.totalPages > 1
+						//- 	// Showing (x) of (x) PAGES
+						//- 	h6.gray Showing 
+						//- 		strong #{data.posts.first}
+						//- 		|  to 
+						//- 		strong #{data.posts.last}
+						//- 		|  of 
+						//- 		strong #{data.posts.total}
+						//- 		|  posts.
+						//- else
+						.grid-x.grid-margin-x(data-equalizer="posts" data-equalize-by-row="true")
+							each post in data.posts.results
+								.cell.small-12.medium-6
+									+post-preview(post)
+								// Showing (x) of (x) ARTICLES
+								//- .cell.small-12: h6.dark-gray Showing #{utils.plural(data.posts.results.length, '* post')}.
+						
+					else
+						if data.category
+							h3.t-marg-30.mob-t-marg-15.b-marg-30 Currently, there are no posts in #{data.category.name}.
+							p.t-marg-10.b-marg-45.mob-b-marg-30 Please choose a different category, and check back soon for more!
+						else
+							h3.t-marg-30.mob-t-marg-15.b-marg-30 Currently, there are no posts to view.
+							p.no-marg.t-marg-10 Please check back soon for more news from Spoken Giants!
+							p.b-marg-45.mob-b-marg-30 In the meantime, <a href='/'>head home</a> or <a href='/membership'>learn more about membership</a>
+					
+					// Pagination (?)
+					//- Good for now.... can't figure out how the hell to determine QUANTITY OF POSTS IN A CATEGORY
+					if data.posts.totalPages > 1 && !data.category
+					
+						ul.pagination
+							li.heading-font Page&nbsp;
+							if data.posts.previous
+								li: a(href='?page=' + data.posts.previous): span.glyphicon.glyphicon-chevron-left &larr;
+							else
+								li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left &larr;
+							each p, i in data.posts.pages
+								li(class=data.posts.currentPage == p ? 'active bold' : null)
+									a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+							if data.posts.next
+								li: a(href='?page=' + data.posts.next): span.glyphicon.glyphicon-chevron-right &rarr;
+							else
+								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+
+block footer_js
+	script(type='text/javascript').
+		$(function(){
+			
+			// Mobile news category menu
+			var $trig = $("#navTrigger");
+			var $nav = $("#navUl");
+			$("#navTrigger").click(function(){
+				if($nav.is(':visible')){
+					$nav.slideUp();
+					$trig.removeClass('active');
+					$trig.html('+ Filter By Category');
+				}else{
+					$nav.slideDown();
+					$trig.addClass('active');
+					$trig.html('- Hide Categories');
+				}
+				//- $nav.slideDown();
+			});
+		});
+		

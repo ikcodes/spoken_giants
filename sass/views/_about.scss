@@ -1,0 +1,518 @@
+#rightsUpdatesBar {
+	background: $black;
+	background-image: url("/images/bg-cta.jpg");
+	background-position: center;
+	background-size: cover;
+	bottom: 0;
+	display: none; // RESET INLINE!
+	position: fixed;
+	padding: 20px;
+	width: 100%;
+	z-index: 1000;
+	p,
+	a {
+		color: $white;
+		font-family: $heading-font;
+		font-size: 22px;
+		margin: 0;
+	}
+	a {
+		color: lighten($blue, 20%);
+		text-decoration: underline;
+	}
+	a:visited {
+		color: $blue;
+	}
+	@media screen and (max-width: 769px) {
+		padding: 10px;
+		p,
+		a {
+			font-size: 18px;
+		}
+	}
+}
+
+#about {
+	#hero {
+		background: $black;
+		position: relative;
+		overflow-x: hidden;
+		width: 100%;
+
+		.slick-list,
+		.slick-track {
+			height: 100%;
+		}
+
+		.slick-arrow {
+			bottom: 0;
+			z-index: 10;
+			left: 0;
+		}
+
+		.hero-slider {
+			background-size: cover;
+			height: 100%;
+			position: absolute;
+			width: 100%;
+		}
+
+		// CAROUSEL ELEMENTS
+		.slider-bg {
+			background-size: cover;
+			background-position: center;
+			height: 100%;
+			position: relative;
+		}
+
+		.slider-bg.flip {
+			-moz-transform: scaleX(-1);
+			-o-transform: scaleX(-1);
+			-webkit-transform: scaleX(-1);
+			transform: scaleX(-1);
+			filter: FlipH;
+			-ms-filter: "FlipH";
+
+			.heroDescription {
+				left: 15px; // The only real way to accomplish reversal.
+				-moz-transform: scaleX(-1);
+				-o-transform: scaleX(-1);
+				-webkit-transform: scaleX(-1);
+				transform: scaleX(-1);
+				filter: none;
+				-ms-filter: none;
+			}
+		}
+
+		// MOBILE SLIDERS
+		@media screen and (max-width: 639px) {
+			#bobHope {
+				background-image: url("/images/slider/bob-hope-mobile.jpg");
+			}
+
+			#foxworthy {
+				background-image: url("/images/slider/jeff-foxworthy-mobile.jpg");
+			}
+
+			#gabriel {
+				background-image: url("/images/slider/gabriel-iglesias.jpg");
+				// background-position: center;
+			}
+
+			#larry {
+				background-image: url("/images/slider/larry.jpg");
+			}
+		}
+
+		//  DESKTOP SLIDERS
+		@media screen and (min-width: 640px) {
+			#larry {
+				background-color: black;
+				background-image: url("/images/slider/larry-desktop.jpg");
+				background-position: top;
+			}
+
+			#gabriel {
+				background-image: url("/images/slider/gabriel-iglesias-desktop.jpg");
+				background-position: top;
+			}
+
+			#bobHope {
+				background-image: url("/images/slider/bob-hope-merged.jpg");
+			}
+
+			#foxworthy {
+				background-image: url("/images/slider/jeff-foxworthy-merged.jpg");
+				background-position: top;
+			}
+		}
+
+		.dots {
+			background: rgba(0, 0, 0, 0.5);
+			bottom: 0;
+			border-radius: 10px 10px 0 0;
+			height: 25px;
+			overflow: hidden;
+			position: absolute;
+			right: 0;
+			width: 80px;
+			z-index: 5;
+
+			.ldot,
+			.rdot {
+				p {
+					color: white;
+					display: inline;
+					font-size: 14px;
+					line-height: 0;
+					height: 20px;
+					width: 20px;
+					margin: 0 !important;
+				}
+
+				position: absolute;
+				cursor: pointer;
+
+				&:hover {
+					i {
+						color: $blue;
+					}
+				}
+			}
+
+			.ldot p {
+				padding-left: 16px;
+			}
+
+			.rdot p {
+				right: 0;
+				padding-right: 20px;
+			}
+		}
+
+		.hero-text-container {
+			position: relative;
+			z-index: 2;
+			padding-top: 30px;
+			padding-bottom: 90px;
+		}
+
+		// Tablet hero
+		@media only screen and (min-width: 640px) {
+			.hero-slider {
+				// background-position: top right;
+			}
+		}
+
+		// Desktop hero
+		@media only screen and (min-width: 1024px) {
+			// BIG ONLY
+			.hero-text-container {
+				padding-top: 0;
+				padding-bottom: 120px;
+			}
+
+			.dots {
+				height: 32px;
+
+				.ldot p,
+				.rdot p {
+					font-size: 20px;
+					line-height: 1.7;
+				}
+
+				.ldot p {
+					padding-left: 11px;
+				}
+
+				.rdot p {
+					position: relative;
+					right: 3px;
+				}
+			}
+		}
+
+		// SUPER Desktop hero
+		@media only screen and (min-width: 1400px) {
+			// SUPAH BIG
+			.hero-slider {
+				// background-position: top right;
+				// background-position-y: -200px;
+			}
+
+			.hero-text-container {
+				padding-top: 100px;
+				padding-bottom: 150px;
+			}
+		}
+
+		@media only screen and (min-width: 1800px) {
+			// REALLY REALLY REALLY BIG
+			.hero-text-container {
+				padding-bottom: 300px;
+			}
+		}
+
+		h1 {
+			color: $white;
+			font-size: 56px;
+			font-weight: 800;
+			line-height: 1;
+			padding-top: 100px;
+			text-transform: uppercase;
+
+			@media only screen and (max-width: 1024px) {
+				// MED ONLY
+				font-size: 36px;
+				padding-top: 60px;
+			}
+		}
+
+		p {
+			color: $white;
+			font-size: 22px;
+			letter-spacing: -0.5px;
+			margin: 10px 0 25px;
+
+			@media only screen and (max-width: 639px) {
+				// SMALL ONLY
+				font-size: 24px;
+			}
+		}
+
+		.button {
+			border-color: $white;
+			border-width: 2px;
+			box-shadow: 5px 10px 20px $trans-dark;
+			color: $white;
+			font-size: 18px;
+			padding: 15px 30px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			transition: $fast-trans;
+
+			&:hover {
+				border-color: $white;
+				box-shadow: 5px 10px 20px $trans-dark;
+				color: $white;
+				transition: all 250ms;
+			}
+
+			@media only screen and (max-width: 639px) {
+				// SMALL ONLY
+				border-color: $blue;
+				color: $white;
+				font-size: 18px;
+				width: 213px;
+
+				&:hover {
+					border-color: transparent;
+				}
+			}
+
+			@media screen and (min-width: 640px) {
+				// TABLET UP
+				background-color: transparent;
+
+				&:hover {
+					box-shadow: 5px 10px 20px $trans-dark;
+					color: $white;
+				}
+			}
+		}
+
+		.heroDescription {
+			bottom: 35px;
+			position: absolute;
+			right: 15px;
+
+			@media only screen and (min-width: 1024px) {
+				// BIG ONLY
+				bottom: 7vh;
+				right: 10vw;
+			}
+
+			p {
+				color: $blue;
+				font-family: $heading-font;
+				font-size: 20px;
+				margin: 0;
+				line-height: 1.2;
+				text-align: right;
+
+				&.first {
+					color: $white;
+					font-size: 26px;
+					text-transform: uppercase;
+				}
+
+				.of {
+					font-size: 22px;
+				}
+
+				@media only screen and (min-width: 1024px) {
+					// BIG ONLY
+					font-size: 24px;
+
+					&.first {
+						font-size: 28px;
+					}
+				}
+
+				@media only screen and (min-width: 1400px) {
+					// SUPAH BIG
+					font-size: 28px;
+
+					&.first {
+						font-size: 32px;
+					}
+				}
+
+				@media only screen and (min-width: 1800px) {
+					// SUPAH BIG
+					font-size: 32px;
+
+					&.first {
+						font-size: 36px;
+					}
+				}
+			}
+		}
+	}
+
+	#aboutFoldPhoto {
+		background-image: url("/images/members/alycia-2.jpg");
+		background-size: cover;
+		background-position: top;
+		border: 4px solid $blue;
+		border-radius: 7px;
+		display: inline-block;
+		height: 300px;
+		width: 100%;
+
+		-moz-transform: scaleX(-1);
+		-o-transform: scaleX(-1);
+		-webkit-transform: scaleX(-1);
+		transform: scaleX(-1);
+		filter: FlipH;
+		-ms-filter: "FlipH";
+
+		@media screen and (min-width: 1024px) {
+			height: 420px;
+		}
+
+		@media screen and(min-width: 640px) and (max-width: 1023px) {
+			height: 500px;
+		}
+	}
+
+	@media screen and(min-width: 640px) {
+		.about-fold-text {
+			color: $gray;
+			letter-spacing: -0.5px;
+		}
+	}
+
+	@media screen and (max-width: 639px) {
+		.about-fold-text {
+			display: none;
+		}
+	}
+
+	#aboutFoldPhoto2 {
+		background-image: url("/images/members/jeff-allen.jpg");
+		background-size: cover;
+		background-position: center;
+		border: 4px solid $blue;
+		border-radius: 7px;
+		display: inline-block;
+		height: 300px;
+		width: 100%;
+
+		-moz-transform: scaleX(-1);
+		-o-transform: scaleX(-1);
+		-webkit-transform: scaleX(-1);
+		transform: scaleX(-1);
+		filter: FlipH;
+		-ms-filter: "FlipH";
+
+		@media screen and(min-width: 640px) {
+			height: 500px;
+			background-position: center top;
+		}
+	}
+
+	#aboutUs {
+		@media screen and (max-width: 1023px) {
+			p {
+				text-align: left !important;
+			}
+		}
+
+		.cms-content {
+			p {
+				font-size: 18px;
+				margin-right: 30px;
+				text-align: right;
+			}
+		}
+	}
+
+	#subhero2 {
+		.cms-content {
+			@media screen and(min-width: 640px) {
+				p {
+					margin-left: 30px;
+				}
+			}
+
+			p {
+				font-size: 18px;
+			}
+		}
+	}
+
+	.about-tm {
+		text-align: left;
+
+		img {
+			border-radius: 100%;
+			height: 120px;
+			margin: 0 auto 15px;
+
+			&.default {
+				border: 4px solid $blue;
+			}
+		}
+
+		h5 {
+			color: $black;
+			font-family: $heading-font;
+			margin-bottom: 0;
+		}
+
+		p.position {
+			color: $gray;
+		}
+	}
+}
+
+.horizontal {
+	h3 {
+		font-size: 1.7rem;
+	}
+}
+
+#JPO {
+	p {
+		font-size: 18px;
+		letter-spacing: -0.5px;
+	}
+}
+
+#xButton {
+	cursor: pointer;
+	position: absolute;
+	top: 5px;
+	right: 13px;
+}
+
+#explainer {
+	p {
+		font-size: 18px;
+		text-align: center;
+	}
+}
+
+#explainerContainer {
+	// Video container... wouldn't exist if the plugin worked
+	padding-bottom: 0;
+
+	&.played {
+		padding-bottom: 56.25%;
+	}
+
+	#explainerVideo {
+		position: relative;
+	}
+}

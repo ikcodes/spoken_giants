@@ -1,0 +1,56 @@
+#contact {
+	background-color: $offwhite;
+	#hero {
+		// background-image: url('/images/hero/poet-3.jpg');
+		background-position: center right;
+		@media only screen and (min-width: 640px) {
+			// background-image: url('/images/hero/sign.jpg');
+		}
+		@media only screen and (min-width: 1024px) {
+			// BIG ONLY
+			// background-image: url('/images/hero/poet-1.jpg');
+			// background-position: center left;
+			// background-size: 120%;
+			// height: 600px;	// Let padding take this.
+		}
+	}
+	#formContainer {
+		padding: 0 0 30px;
+	}
+	.white-section {
+		border-radius: 4px;
+		background-color: $white;
+		padding: 30px 10px 0;
+		@media only screen and (min-width: 640px) {
+			padding: 45px 10px 0;
+		}
+		@media only screen and (min-width: 1024px) {
+			// BIG ONLY
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+	}
+	.button {
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		margin-bottom: 30px;
+	}
+	#moreResources {
+		background-color: $offwhite;
+		border-radius: 4px;
+		margin-bottom: 30px;
+		padding: 10px 10px 1px;
+	}
+	#leftLine {
+		background-color: $offwhite;
+		bottom: 30px;
+		left: -0.9375rem;
+		position: absolute;
+		top: 43px;
+		width: 1px;
+		@media only screen and (min-width: 1024px) {
+			// BIG ONLY
+			left: 50%;
+		}
+	}
+}

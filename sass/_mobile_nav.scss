@@ -1,0 +1,157 @@
+@media only screen and (max-width: 639px){
+	
+	#nav{
+		height: $nav-height-mobile;
+		#navLogo{
+			margin: 0 5px;
+			padding: 10px 5px 5px;
+			width: 60px;
+		}
+		#navName{
+			margin-top: 17px;
+			padding: 0;
+			width: 75px;
+		}
+		#navItems.closed{
+			display: none;
+			transition: $slow-trans;
+		}
+		#navItems.open{
+			background: $black;
+			display: block;
+			height: 100vh;
+			left: 0;
+			margin-right: 0;
+			overflow: hidden;
+			padding-right: 22px;
+			padding-bottom: 60px;
+			position: absolute;
+			top: 60px;
+			transition: $slow-trans;
+			width: 100%;
+		}
+	}
+	
+	// .top-bar, .top-bar.scrolled{
+	// 	background-color: $white;
+	// 	padding: 10px 15px;
+	// 	position: fixed;
+	// }
+	// .top-bar-right{
+	// 	display: block;
+	// 	height: 0;
+	// 	transition: height 200ms cubic-bezier(.45,.05,.55,.95);
+	// 	.menu{
+	// 		display: block;
+	// 		opacity: 0;
+	// 		li{
+	// 			display: none;
+	// 		}
+	// 	}
+	// 	&.open{
+	// 		height: 100vh;
+	// 		overflow: hidden;
+	// 		transition: height 500ms ease-in-out;
+	// 		.menu{
+	// 			flex-wrap: nowrap;
+	// 			flex-direction: column;
+	// 			margin-top: 15px;
+	// 			opacity: 1;
+	// 			transition: opacity 250ms;
+	// 			li{
+	// 				display: block;
+	// 				font-size: 19px;
+	// 				margin: 0 0 0 24px;
+	// 				padding: 10px;
+	// 				a{
+	// 					color: $blue;
+	// 					&::after{
+	// 						display: none;
+	// 					}
+	// 				}
+	// 				&:last-of-type a{
+	// 					color: $blue;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+	#nav-button {	// Container (padded for touch sensitivity)
+		cursor: pointer;
+		position: absolute;
+		z-index: 102;
+		transition: 0.3s background-color ease-in-out;
+		top: 4px;
+		right: 2px;
+		width: 60px;
+		height: 60px;
+		padding: 17px 16px;
+	}
+
+	#hamburger {	// Container for spans (orange bars) and animation
+		width: 28px;
+		height: 22px;
+		position: absolute;
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+		transition: .3s ease-in-out;
+		cursor: pointer;
+		z-index: 1;
+
+		span {
+			display: block;
+			position: absolute;
+			height: 3px;
+			width: 100%;
+			background: $white;
+			opacity: 1;
+			left: 0;
+			transform: rotate(0deg);
+			transition: .25s ease-in-out;
+			&:nth-child(1) {
+				top: 0px;
+			}
+			&:nth-child(2) {
+				top: 9px;
+			}
+			&:nth-child(3) {
+				top: 18px;
+			}
+			&::after {
+				top: 0px;
+				left: 0px;
+				padding: 1px;
+				z-index: -1;
+				background: $white;
+				transform: scale(1);
+				transition: transform 0.2s, opacity 0.3s, background 0.3s;
+				pointer-events: none;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				content: '';
+			}
+		}
+		&.open {
+			span::after{
+				background-color: $blue;
+			}
+			span:nth-child(1) {
+				top: 11px;
+				transform: rotate(135deg);
+			}
+			span:nth-child(2) {
+				top: 11px;
+				transform: rotate(-135deg);
+			}
+
+			span:nth-child(3) {
+				top: 11px;
+				transform: rotate(-135deg);
+				opacity: 0;
+			}
+		}
+	}
+}

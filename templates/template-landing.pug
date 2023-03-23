@@ -1,0 +1,84 @@
+include mixins/flash-messages
+include mixins/headings
+
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		title= title || 'Spoken Giants'
+		
+		// Favicon Stuff
+		link(rel="apple-touch-icon", sizes="180x180", href="/apple-touch-icon.png")
+		link(rel="icon", type="image/png", sizes="32x32", href="/favicon-32x32.png")
+		link(rel="icon", type="image/png", sizes="16x16", href="/favicon-16x16.png")
+		link(rel="manifest", href="/site.webmanifest")
+		link(rel="mask-icon", href="/safari-pinned-tab.svg", color="#ffffff")
+		meta(name="msapplication-TileColor", content="#ffffff")
+		meta(name="theme-color", content="#ffffff")
+		
+		// Global CSS
+		link(href="/css/foundation.min.css", rel="stylesheet")
+		link(href="/css/slick-theme.css", rel="stylesheet")
+		link(href="/css/slick.css", rel="stylesheet")
+		link(href="/css/app.css", rel="stylesheet")
+		//- link(href="/css/supplemental.css", rel="stylesheet")
+		//- A, B, C
+		//- link(href="https://fonts.googleapis.com/css?family=Kanit:200,300,400,600,700|Bree+Serif|Catamaran:400,500,600,700,800,900|Palanquin:100,200,300,400,500,600,700&display=swap" rel="stylesheet")
+		
+		//- New fonts + fontAwesome
+		link(href="https://fonts.googleapis.com/css?family=Noto+Sans:200,300,400,500,600,700|Fjalla+One:200,300,400,500,600,700&display=swap" rel="stylesheet")
+		link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet")
+
+		//- This file provides the default styling for the KeystoneJS Content Editor
+		if user && user.canAccessKeystone
+			link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
+		
+		//-[if lt IE 9]
+			script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
+			script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
+		//-[endif]
+		if environment == 'production'
+			// GOOGLE TAG MANAGER (scripted)
+			script.
+				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','dataLayer','GTM-MJL5RNL');
+		else
+			// GTM OMMITTED FOR DEV!
+
+		block css
+		block head
+		
+	body.black-bg.site-grayout
+	
+		if environment == 'production'
+			// GTM (noscript)
+			noscript
+				iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-MJL5RNL" height="0" width="0" style="display:none;visibility:hidden")
+		else
+			// GTM Ommitted for Dev
+		
+		//- BODY
+		main#main(role="main" style='padding-top: 0px;').landing
+			block content
+		
+		//==============
+		//   FOOTER
+		//==============
+		footer#footer(role="footer"): .grid-container: #footerCopyright: p.text-center &copy; Spoken Giants 2020
+	
+			script(src="/js/jquery.min.js" type="text/javascript")
+			script(src="/js/foundation.min.js" type="text/javascript")
+			script(src="/js/what-input.js" type="text/javascript")
+			script(src="/js/slick.min.js" type="text/javascript")
+			script(src="/js/app.js" type="text/javascript")
+			
+		//- FIGURE THIS OUT!
+		if user && user.canAccessKeystone
+			script(src='/keystone/js/content/editor.js')
+			
+		block footer_js

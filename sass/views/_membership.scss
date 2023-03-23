@@ -1,0 +1,327 @@
+#membership{
+	#aboutFoldPhoto, #aboutFoldPhoto2{	// COPYPASTA
+		background-image: url('/images/members/paris-sashay.jpg');
+		background-size: cover;
+		background-position: center;
+		border: 4px solid $blue;
+		border-radius: 7px;
+		display: inline-block;
+		height: 300px;
+		width: 100%;
+		@media screen and (min-width: 640px){
+			height: 420px;
+		}
+	}
+	#aboutFoldPhoto2{
+		height: 420px;
+	}
+	
+	#licensingOverlay{
+		background: rgba(0, 0, 0, 0.7);
+		
+		// ADJUST HEIGHT BASED ON PAGE CONTENTS
+		
+		height: 600%;
+		@media screen and(max-width: 639px){
+			height: 666%;
+		}
+		position: absolute;
+		width: 100%;
+		z-index: -10000;
+		&.active{
+			z-index: 1;
+		}
+	}
+	
+	#itemExplainers{
+		.item-explainer{
+			background: white;
+			display: none;
+			height: 0;
+			// position: absolute;
+			text-align: center;
+			z-index: -1000;
+			.lg-underline{
+				margin-bottom: 30px;
+			}
+			.exit-button{
+				font-weight: 900;
+				letter-spacing: 2px;
+				margin-top: 30px;
+				width: 50%;
+				position: absolute;
+				bottom: -41px;
+				left: 25%;
+				border-radius: 100px;
+			}
+			&.engaged{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				
+				bottom: 0;
+				border-radius: 20px;
+				display: table;
+				height: auto;
+				padding: 50px;
+				right: 10px;
+				// top: 25%;
+				z-index: 2;	// overlay is 1
+			}
+			// TABLET UP EXPLAINERS
+			@media screen and (min-width: 640px){
+				p{
+					font-size: 16px;
+				}
+			}
+			// MOBILE EXPLAINERS
+			@media screen and(max-width: 639px){
+				&.engaged{
+					top: 20%;
+					left: 8%;
+					transform: translate(-8%, -14%);
+					padding: 20px 20px 30px;
+				}
+				p{
+					text-align: left;
+				}
+			}
+		}
+	}
+	
+	.about-fold-text{
+		letter-spacing: -0.5px;
+	}
+	
+	#whatIsaMember{
+		.cms-content{
+			p{
+				font-size: 18px;
+				margin-right: 30px;
+				text-align: right;
+			}
+		}
+	}
+	#spokenGiantsLegacy{
+		@media screen and(min-width: 640px){
+			h2, p:not(.about-fold-text){
+				margin-left: 30px;
+			}
+		}
+		@media screen and(min-width: 640px) and (max-width: 1024px){
+			h2{
+				font-size: 24px;
+			}
+		}
+		.cms-content{
+			p{
+				font-size: 18px;
+				text-align: left;
+			}
+		}
+	}
+	
+	#membershipSliderWrap{
+		background-color: $white;
+		border-radius: 20px;
+		border: 4px solid $blue;
+	}
+	
+	.slick-arrow{
+		background: $blue;
+		border: 2.5px solid $white;
+		border-radius: 100%;
+		box-shadow: -2px 3px 3px 0 rgba($black, 0.6);
+		color: $white;
+		cursor: pointer;
+		display: inline-block;
+		height: 40px;
+		width: 40px;
+		transition: all 240ms;
+		&.alt{
+			background-color: $white;
+			border-color: $blue;
+			color: $blue;
+		}
+		i{
+			padding-top: 10px;
+			// padding-left: 11px;
+			position: relative;
+			display: inline-block;
+			transition: all 240ms;
+		}
+		&:hover{
+			transition: all 240ms;
+			i.left-arrow{
+				transition: right 240ms;
+				right: 2px;
+			}
+			i.right-arrow{
+				left: 2px;
+				transition: left 240ms;
+			}
+			i.bottom-arrow{
+				top: 2px;
+			}
+			i.top-arrow{
+				bottom: 2px;
+			}
+		}
+	}
+	
+	
+	#membershipSlider{
+		.arrow-bottom, .arrow-top{
+			position: relative;
+		}
+		.arrow-bottom{
+			bottom: -20px;
+		}
+		.arrow-top{
+			top: -20px;
+		}
+		.genre-we-represent{
+			h3{
+				color: $black;
+				margin-bottom: 5px;
+				margin-top: 15px;
+				line-height: 1;
+			}
+			i{
+				color: $black;
+				border-radius: 100%;
+				margin-left: 15px;
+			}
+			p{
+				margin-bottom: 10px;
+				color: $black;
+			}
+		}
+	}
+	
+	
+	
+	
+	#workflow{
+		.workflow-item{
+			margin-bottom: 15px;
+			margin-top: 15px;
+			@media screen and (min-width: 640px){
+				margin-bottom: 30px;
+				margin-top: 30px;
+			}
+			p{
+				display: inline-block;
+				margin-bottom: 0;
+			}
+			// BOLDED STEP!
+			&:nth-of-type(2){
+				p.number{
+					background-color: lighten($blue, 10%);
+					border-color: $black;
+					box-shadow: $box-shadow-heavy;
+					color: $black;
+					transition: all 250ms;
+				}
+				p.step{
+					background-color: lighten($blue, 10%);
+					border-color: $black;
+					box-shadow: $box-shadow-heavy;
+					color: $black;
+					transition: all 250ms;
+				}
+				.connecting-line{
+					background: $black;
+					transition: all 250ms;
+				}
+			}
+		}
+		p.number{
+			background-color: $white;
+			border: 3px solid $blue;
+			border-radius: 100%;
+			box-shadow: $box-shadow;
+			display: inline-block;
+			font-family: $heading-font;
+			font-size: 40px;
+			font-weight: bold;
+			height: 70px;
+			padding-right: 16px;
+			text-align: right;
+			transition: all 250ms;
+			width: 70px;
+			.period{
+				font-size: 30px;
+			}
+		}
+		p.step{
+			background-color: $white;
+			border-radius: 12px;
+			border: 3px solid $blue;
+			box-shadow: $box-shadow;
+			cursor: pointer;
+			font-family: $heading-font;
+			font-size: 20px;
+			height: 100%;
+			margin-left: -10px;
+			padding: 15px;
+			width: 100%;
+		}
+		.connecting-line{
+			background: $blue;
+			left: -22px;
+			height: 3px;
+			width: 14px;
+			position: absolute;
+			top: 50%;
+			transition: all 250ms;
+			@media screen and (min-width: 640px){
+				left: -32px;
+				width: 23px;
+			}
+		}
+		.workflow-item.active{
+			p.number{
+				background-color: $blue;
+				border-color: $black;
+				box-shadow: $box-shadow-heavy;
+				color: $white;
+				transition: all 250ms;
+			}
+			p.step{
+				background-color: $blue;
+				border-color: $black;
+				box-shadow: $box-shadow-heavy;
+				color: $white;
+				transition: all 250ms;
+			}
+			.connecting-line{
+				background: $black;
+				transition: all 250ms;
+			}
+		}
+	}
+	
+	
+	.accordion{
+		border: 0;
+		// border-color: $blue;
+		.accordion-title{
+			border: 0;
+			border-radius: 6px;
+			color: $black;
+			font-size: 18px;
+			font-family: $heading-font;
+		}
+		.accordion-title:focus, .accordion-title:hover{
+			color: $black;
+			background-color: $light-gray;
+		}
+		.accordion-content{
+			border: 0;
+			
+		}
+	}
+	
+}

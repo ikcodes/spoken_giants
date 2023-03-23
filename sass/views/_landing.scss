@@ -1,0 +1,88 @@
+.site-grayout{
+	#footer{
+		padding: 0 !important;
+		#footerCopyright{
+			margin-top: 15px;
+		}		
+	}
+}
+
+.landing{
+	
+	// background-color: #f0f !important;
+	
+	#landingMain{
+		min-height: 90vh;	// Keep copyright line down
+		p, h2, h3, h4{
+			color: $white;
+		}
+		h4{
+			font-family: $heading-font;
+		}
+		
+		.button{
+			color: $white;
+			&:hover{
+				color: $blue;
+			}
+			// border: 0 !important;
+		}
+		#bigMike{
+			height: 30vh;
+			margin-top: 50px;
+			// width: 100%;
+			// position: relative;
+		}
+		#countdown{
+			color: #819ee8;
+			margin-bottom: 20px;
+		}
+		.hero-text-container{
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		
+		// Tablet hero
+		@media only screen and (min-width: 640px){
+			#bigMike{
+				// height: 50vh;
+			}
+			.hero-text-container{
+				p{
+					font-size: 18px;
+					margin-bottom: 8px;
+					margin-top: 5px;
+				}
+			}
+		}
+		
+		// Desktop hero
+		@media only screen and (min-width: 1024px){	// BIG ONLY
+			#bigMike{
+				height: 40vh;
+			}
+			.hero-text-container{
+				p{
+					// font-size: 20px;
+				}
+			}
+		}
+		
+		// SUPER Desktop hero
+		@media only screen and (min-width: 1400px){	// SUPAH BIG
+			#bigMike{
+				height: 45vh;
+			}
+			.hero-text-container{
+				
+			}
+		}
+		@media only screen and (min-width: 1800px){	// REALLY REALLY REALLY BIG
+			#bigMike{
+			}
+			.hero-text-container{
+				
+			}
+		}
+	}
+}

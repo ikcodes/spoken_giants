@@ -1,0 +1,318 @@
+extends ../template
+include ../mixins/cta
+include ../mixins/post-preview-horizontal
+
+block head
+	link(rel='stylesheet' href='/css/rtop.min.css')
+	link(rel="stylesheet" href='https://use.fontawesome.com/releases/v5.10.0/css/all.css')
+	
+	//- Cookie popup
+	style(type='text/css').
+		#JPO_background{
+			opacity: 0.65 !important;
+		}
+
+block content
+	#about
+		// ==============
+		// HERO CAROUSEL
+		// ==============
+		#hero
+			.dots: .grid-x.grid-margin-x
+				.cell.small-6: .ldot: p: i.fa.fa-arrow-left
+				.cell.small-6: .rdot: p: i.fa.fa-arrow-right
+			
+			// SLICK TRACK 
+			.hero-slider
+			
+				.slider-bg(style='background-image:url("/images/slider/tom-segura.jpg");')
+					.heroDescription
+						p.first Tom Segura
+						p Spoken Giants Member
+						
+				.slider-bg(style='background-image:url("/images/slider/lewis-black.jpg");')
+					.heroDescription
+						p.first Lewis Black
+						p Spoken Giants Member
+				
+				.slider-bg#foxworthy.flip
+					.heroDescription
+						p.first Jeff Foxworthy
+						p Spoken Giants Member
+				
+				.slider-bg#larry
+					.heroDescription
+						p.first Larry <span class='of'>The</span> Cable Guy
+						p Spoken Giants Member
+						
+				.slider-bg#gabriel
+					.heroDescription
+						p.first Gabriel Iglesias
+						p Spoken Giants Member
+				
+				.slider-bg(style='background-image:url("/images/slider/elayne-boosler.jpg");')
+					.heroDescription
+						p.first Elayne Boosler
+						p Spoken Giants Member
+				
+				.slider-bg(style='background-image:url("/images/slider/roy-wood-jr.jpg");')
+					.heroDescription
+						p.first Roy Wood Jr.
+						p Spoken Giants Member
+				
+				.slider-bg#bobHope.flip
+					.heroDescription
+						p.first Estate <span class='of'>of</span> Bob Hope
+						p Spoken Giants Member
+				
+				.slider-bg(style='background-image:url("/images/slider/lucy-and-desi.jpg")').flip#lucilleAndDesi
+					.heroDescription
+						p.first Estates <span class='of'>of</span> Lucille Ball <span class='of'>and</span> Desi Arnaz
+						p Spoken Giants Members
+				
+				.slider-bg(style='background-image:url("/images/slider/mike-birbiglia.jpg");')
+					.heroDescription
+						p.first Mike Birbiglia
+						p Spoken Giants Member
+				
+				.slider-bg(style='background-image:url("/images/slider/don-rickles.jpg");').flip
+					.heroDescription
+						p.first Estate <span class='of'>of</span> Don Rickles
+						p Spoken Giants Member
+				
+				.slider-bg(style='background-image:url("/images/slider/kyle_kinane.jpg");').flip
+					.heroDescription
+						p.first Kyle Kinane
+						p Spoken Giants Member
+						
+				.slider-bg(style='background-image:url("/images/slider/kathleen-madigan.png");').flip
+					.heroDescription
+						p.first Kathleen Madigan
+						p Spoken Giants Member
+				
+				.slider-bg(style='background-image:url("/images/slider/ralphie-may.jpg");').flip
+					.heroDescription
+						p.first Estate <span class='of'>of</span> Ralphie May
+						p Spoken Giants Member
+						
+				.slider-bg(style='background-image:url("/images/slider/leanne-morgan.jpg");')
+					.heroDescription
+						p.first Leanne Morgan
+						p Spoken Giants Member
+			
+				.slider-bg(style='background-image:url("/images/slider/patton-oswalt.jpg"); background-position: top;')
+					.heroDescription
+						p.first Patton Oswalt
+						p Spoken Giants Member
+			
+			.grid-container: .grid-x
+				.cell.large-5.medium-6.small-8
+					.hero-text-container
+						h1 Your Rights. <br><span class="blue">Our Reach.</span>
+						!=content[0]['content']
+						a.button.r-marg-15(href="/membership") More Info
+							i.button-icon.fa.fa-arrow-right
+						br.hide-for-medium
+						a.button(href="/sign-up") Sign Up
+							i.button-icon.fa.fa-arrow-right
+		
+		// YOUR RIGHTS UPDATES
+		//====================
+		if data.posts.results.length
+			section.licensingTypes#updates
+				.licensingTypesCover
+				.licensingTypesInner: .tb-pad-45.mob-tb-pad-30: .grid-container
+					.grid-x.grid-margin-x(data-equalizer="posts" data-equalize-by-row="true")
+						.cell.b-marg-15
+							h2 Your Rights Updates
+							.sm-underline.blue
+						each post in data.posts.results
+							.cell.small-12.medium-12
+								+post-preview-horizontal(post)
+		
+		
+		// MAIN POST-HERO
+		section#aboutUs.white-bg.tb-pad-60.mob-t-pad-30.mob-b-pad-15: .grid-container
+			.grid-x.align-middle
+				.cell.small-12.medium-auto: .mob-lr-pad-10
+					h2.no-marg=content[1]['title']
+					hr#mobUnderline1.lg-underline.blue
+					.cms-content.tb-pad-15: !=content[1]['content']
+					//- p.text-right.r-marg-30(style="font-size: 18px") Spoken Giants is the world&rsquo;s first multi-rights administration organization to value spoken word assets in entertainment and media industries. It is set up to help you collect hard-to-find composition, mechanical and performance monies that are owed to you.
+					p.text-right.b-marg-0.r-marg-30
+						a.button.large.r-marg-30.mob-fullwidth(href="/sign-up") Join Spoken Giants
+							i.button-icon.fa.fa-arrow-right
+						a.button.large.mob-fullwidth(href="/membership") More About Membership
+							i.button-icon.fa.fa-arrow-right
+				.cell.medium-5.large-4.small-12: .grid-x 
+					.cell.small-12: #aboutFoldPhoto
+					.cell.small-12: p.about-fold-text <strong><span class='blue'>Alycia Cooper</span></strong>&nbsp;|&nbsp;Spoken Giants Member
+		
+		// EXPLAINER VIDEO
+		//==================
+		section#explainer.light-gray-bg.tb-pad-60.mob-tb-pad-30: .grid-container
+			.grid-x.grid-padding-x.align-center
+				.cell.large-6.medium-9.small-11: .b-pad-15
+					+h2-centered(content[2]['title'])
+					!=content[2]['content']
+			
+			.grid-x.grid-padding-x.align-center
+				.cell.large-9.medium-10.small-11
+					#explainerContainer: #explainerVideo(data-video="/images/video/Spoken-Giants-Explainer-Web.mp4" data-type="video/mp4" data-poster="/images/explainer-placeholder.png")
+			
+		// WAT DO?
+		section#subhero2.white-bg.tb-pad-60.mob-t-pad-30.mob-b-pad-15.mob-lr-pad-10: .grid-container
+			.grid-x.align-middle
+				.cell.medium-5.large-4.small-12.show-for-medium: .grid-x
+					.cell.small-12: #aboutFoldPhoto2
+					.cell.small-12: p.about-fold-text <strong><span class='blue'>Jeff Allen</span></strong>&nbsp;|&nbsp;Spoken Giants Member
+
+				.cell.small-12.medium-auto
+					h2.l-marg-30.no-marg=content[3]['title']
+					hr#mobUnderline2.lg-underline.blue
+					.cms-content: !=content[3]['content']
+					p.text-left.b-marg-0.l-marg-30
+						a.button.large.r-marg-30.mob-fullwidth(href="/licensing") Learn About Licensing
+							i.button-icon.fa.fa-arrow-right
+						a.button.large.mob-fullwidth(href='mailto:jking@spokengiants.com?subject=Licensing With Spoken Giants') I&rsquo;d Like to License
+							i.button-icon.fa.fa-arrow-right
+		
+		+cta()
+		
+		// WHO IS?
+		section.white-bg.tb-pad-45.mob-tb-pad-30.mob-lr-pad-10: .grid-container
+			.grid-x.tb-pad-15.align-center: .cell.small-12.medium-shrink
+				+h2-centered(content[4]['title'])
+			.grid-x.b-pad-15.align-center: .small-12.medium-9.large-8
+				!=content[4]['content']
+			.tb-pad-15.mob-t-pad-15
+				.grid-x.align-center
+					- var i = 0
+					each tm in data.team
+						if i == 4
+							</div><div class="grid-x align-center">
+						- i++
+						.cell.small-6.medium-6.large-2: .about-tm
+							.cell.t-pad-15.text-center
+								//- if tm.image.exists
+									img(src=tm.image.url)
+									else
+								img.default(src='/images/logo/logo-sm-robot.png')
+							.cell.b-pad-15.text-center
+								h5=tm.name
+								p.position=tm.position
+							
+							
+							//- HIDDEN POPUP STUFF
+							
+	//- .JPO_open
+	
+	//- // PRESS RELEASE POPUP - NEEDS COOKIES
+	//- //====================================
+	//- #JPO
+	//- 	.grid-container: .grid-x.grid-margin-x.align-center
+	//- 		.cell.small-12.medium-9.large-8: .raised-section.t-pad-15.rel
+	//- 			#xButton.JPO_close: i.fa.fa-close
+	//- 			.grid-x.grid-margin-x.align-center
+	//- 				.cell.small-12.text-justify
+	//- 					.hide-for-medium.mob-t-pad-15
+	//- 						+h3-centered("Introducing SPOKEN GIANTS!")
+	//- 					.show-for-medium
+	//- 						+h2-centered("Introducing SPOKEN GIANTS!")
+	//- 				.cell.small-12.medium-10.large-8.text-left
+	//- 					p.text-justify.t-pad-10 Spoken Giants is thrilled to announce the launch of our company and our major partner, <strong>Muserk</strong>!
+	//- 					p.text-justify.b-pad-15 Never before have the rights of creative comedy bits, tracks, albums, and compositions been represented on behalf of artists and creators.
+	//- 			.grid-x.grid-margin-x.align-center
+	//- 				.cell.small-12.medium-6.small-text-center.medium-text-right
+	//- 					a(href='/press-release').button.large.mob-fullwidth View Press Release
+	//- 				.cell.small-12.medium-6.small-text-center.medium-text-left
+	//- 					.button.large.mob-fullwidth.JPO_close Continue to Site
+
+block footer_js
+	script(src='/js/rtop.min.js' type='text/javascript')
+	script(type='text/javascript').
+		$(function(){
+			
+			var speed = 2500
+			
+			// HERO SLIDER STUFF
+			//===================
+			$('.hero-slider').slick({	// Hi, Ken
+				autoplay: true,
+				arrows: false,
+				autoplaySpeed: speed,
+			});
+			$('.rdot').click(function(){
+				$('.hero-slider').slick('slickNext');
+			});
+			$('.ldot').click(function(){
+				$('.hero-slider').slick('slickPrev');
+			});
+			
+			// VIDEO STUFF
+			//=============
+			var loop_video = true;
+			var vid_played = false;
+			var player_args = {
+				
+				// Modal now
+				showCloseBtn: true,
+				closeModalOnFinish: true,
+				playInModal: true,
+
+				showScrubber: true,
+				showPlayPauseBtn: true,
+				showSoundControl: true,
+				showFullScreen: true,
+				keyboardControls: true
+			}
+			
+			var explainerElement = $('#explainerVideo');
+			var explainerVideo = explainerElement.RTOP_VideoPlayer(player_args);
+			explainerVideo.on('play.vid.rtop_videoplayer', function(event){
+				$("#explainerContainer").addClass('played');
+			})
+			
+			var st = $(window).scrollTop()
+			if(st >= 800){
+				$("#nav").addClass('scrolled');
+			}
+			
+			// Send it on click (default behavior disabled by z-index controls)
+			//- $('#triggerExplainer').click(function(){
+			//- 	explainerVideo.RTOP_VideoPlayer('play');
+			//- })
+			
+			/* Unnecessary, this:
+			
+			// On play behavior: scroll to vid and hide nav
+			explainerVideo.on('play.vid.rtop_videoplayer', function(event){
+				
+				// Custom 
+				$('#explainerContainer').removeClass('hovering').addClass('activated');
+				$("#explainerOverlay").remove()
+				if(vid_played == false){	// Only scroll to video ONCE. (Prevents )
+					$('html, body').animate({scrollTop:$('#explainerContainer').position().top}, 'slow', function(){
+						vid_played = true;
+						$("#nav").addClass('scrolled')
+					});
+				}
+				
+				if(!loop_video){	 
+					setTimeout(function(){
+						$('html, body').animate({scrollTop:$('#subhero2').position().top}, 'slow', function(){
+							$("#nav").addClass('scrolled')
+						});
+					}, 46000);	// Time it takes video to play
+				}
+			})
+			
+			//  Manage custom hovers
+			$('#learnContainer').hover(function(){
+				$('#explainerContainer').addClass('hovering');
+			}, function(){
+				$('#explainerContainer').removeClass('hovering');
+			})
+			*/
+			
+		})

@@ -1,0 +1,137 @@
+extends ../template-landing
+
+block head
+	script(type="text/javascript" src="https://static.eversign.com/js/embedded-signing.js")
+	script(type="text/javascript" src="https://static.eversign.com/js/embedded-requesting.js")
+
+block content
+	- var DISALBE_APP = false;
+	#signUp
+		#hero: .grid-container: .grid-x.grid-margin-x: .cell: .hero-text-container
+			h1 Join Spoken Giants
+			if testing_signup
+				p(style="color:white;font-size:14px;margin:0;") Performing a test signup.
+		
+		if DISALBE_APP
+			section.tb-pad-30.mob-tb-pad-15(style='background-image: url("/images/patterns/pattern.png")'): .grid-container: .grid-x.grid-margin-x.align-center: .cell.tb-pad-45.mob-tb-pad-30: #step1.raised-section: .tb-pad-30.mob-tb-pad-30
+				+h3('Application Currently Offline')
+				p We are currently not accepting online submissions. To begin an application, or for more information on Spoken Giants, please email our Membership Administrator, Jordan King, at <a href='mailto:jordan@spokengiants.com'>jordan@spokengiants.com</a>.
+		
+		else
+			// PROGRESS CONTAINER
+			//====================
+			section#progressBar.black-bg: .grid-container: .grid-x.grid-margin-x: .cell
+				a#navTrigger.hide-for-medium &plus; Show Progress
+				ul#navUl
+					li: a#step1url(data-step-goto=1).active 1. Basic Info
+					li.show-for-medium.progress-arrow: .fa.fa-arrow-right
+					li: a#step2url(data-step-goto=2).disabled 2. More Info
+					li.show-for-medium.progress-arrow: .fa.fa-arrow-right
+					li: a#step3url(data-step-goto=3).disabled 3. Agreement
+					li.show-for-medium.progress-arrow: .fa.fa-arrow-right
+					li: a#step4url(data-step-goto=4).disabled 4. Complete!
+					
+					
+			// APPLICATION CONTAINER
+			//=======================
+			section.tb-pad-30.mob-tb-pad-15(style='background-image: url("/images/patterns/pattern.png")'): .grid-container: .grid-x.grid-margin-x: .cell.medium-10.large-9
+				p(style='font-size:12px;color:#666') Having trouble signing up? Please <a href='mailto:jordan@spokengiants.com?subject=Spoken Giants Signup Help'>get in touch with us</a>.
+				#appContainer
+				
+					// STEP 3. EVERSIGN (COMPLETE STATE NESTED HERE)
+					//=============================
+					#step3.raised-section(style='display:none')
+						#step4.b-marg-30(style='display: none'): .grid-x.grid-margin-x.grid-margin-y
+							.cell
+								+h3('Congratulations!')
+								p Welcome to the Spoken Giants family. A copy of your agreement has been emailed to you via the address you have provided, as well as a link to view/download your agreement, and check the status of your verification.
+								a.button(href='/next-steps') What Happens Next?
+								
+							.cell: .member-admin
+								h5.heading-font Meet Your Membership Administrator
+								hr.sm-underline.blue
+								p.b-marg-15 Use the contact info below if you have any questions regarding your affiliation.
+								.grid-x.grid-margin-x.grid-margin-y.align-middle
+									.cell.medium-shrink
+										img.default(src='/images/logo/logo-sm-robot.png')
+									.cell.medium-auto
+										p.name Jordan King
+										p.position Membership Administrator
+										p: a(href='mailto:jordan@spokengiants.com') jordan@spokengiants.com
+						
+					
+					//===============================
+					#eversignPopup
+					#eversignContainer
+					//===============================
+					
+					#eversignLoading.raised-section.b-marg-45(style="display:none"): .grid-x.grid-margin-x.align-bottom: .cell.auto
+						+h3("Membership Agreement")
+						p Loading your personalized Membership Agreement...
+					
+					// I AM NOT READY :(
+					//==================
+					#iAmNotReady.raised-section.b-marg-45(style="display:none")
+						+h2('View Membership Agreement')
+						p If you wish to view our Membership Agreement before signing, please use the link below.
+						p: a#downloadAgreement.button.purple(href="/assets/Spoken-Giants-AFFILIATION-AGREEMENT-BLANK.pdf") Download Membership Agreement
+						p#checkYourDownloads(style="display:none") Thank you! Please check your Downloads folder to view the Agreement.
+						p If you have questions, please <a href='/membership#faq'>view our Frequently Asked Questions</a>, or <a href='mailto:jordan@spokengiants.com'>get in touch with us</a>.
+					
+				
+					// STEP 2. MORE INFO
+					//===================
+					#step2.raised-section(style='display:none')
+						#areYouReady(style='display:none').b-marg-45.mob-b-marg-45
+							+h3('Ready To Sign?')
+							.grid-x.align-center.hide-for-medium: .cell.auto
+								p.hide-for-medium(style="font-size: 14px;") We noticed you're on a mobile device. We recommend using a larger device to view &amp; sign the agreement.
+								p.hide-for-medium(style="font-size: 14px;") If you have difficulty viewing, please <a href='mailto:jordan@spokengiants.com'>email our membership administrator</a>.
+								
+							.grid-x.align-center
+								.cell.medium-shrink
+									a#imReady.button.r-marg-15.mob-fullwidth Yes, I&rsquo;m Ready to Sign!
+									
+								.cell.medium-auto
+									a#notReady.button.button.purple.mob-fullwidth No, I&rsquo;m Not Ready Yet.
+						
+						+h3('The Deets')
+						p Nice job on the name. Let's ramp up the difficulty.
+						form#step2form: .grid-x.grid-margin-x.align-bottom
+						
+							.cell.medium-auto
+								p.input-label Email Address
+								p.smalltext Our primary source of communication with you.
+								.input-container: input#email(type='text' name='email' placeholder='example@spokengiants.com').focus
+								
+								p.input-label Phone Number
+								p.smalltext We&rsquo;ll only call you if it&rsquo;s urgent.
+								.input-container: input#phone(type='text' name='phone' placeholder='(615) 555-5555')
+								
+								p.input-label Employer ID / Social Security
+								p.smalltext We need this for tax purposes. Promise, it's in good hands. 
+								.input-container: input#number(type='text' name='number' placeholder='EIN / SSN' value='')
+								
+							.cell.medium-shrink
+								button#submitstep2.button.align-bottom-button.large(type='submit') Next
+									i.button-icon.fa.fa-arrow-right
+							
+							
+					// STEP 1. BASIC INFO
+					//====================
+					#step1.raised-section
+						+h3('The Basics')
+						p Let's start with your full legal name. <br class='show-for-medium'>Stage names and pseudonyms will be handled later.
+						form#step1form
+							.input-container.grid-x.grid-margin-x.align-bottom
+								.cell.medium-auto: input#name(type='text' name='name' placeholder='My Name Is (Who?)')
+								.cell.medium-shrink: button#submitstep1.button.inline-button.large(type='submit') Next
+									i.button-icon.fa.fa-arrow-right
+		
+						
+						
+block footer_js
+	script(src='/js/jquery.validate.min.js')
+	script(src='/js/jquery.validate.additional.min.js')
+	script(src='/js/cleave.min.js' type='text/javascript')
+	script(src='/js/signup_client.js' type='text/javascript')

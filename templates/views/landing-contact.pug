@@ -1,0 +1,66 @@
+extends ../template-landing
+
+block head
+	script(src="https://www.google.com/recaptcha/api.js")
+	script.
+		function onSubmit(token) {
+			document.getElementById("contactForm").submit();
+		}
+
+block content
+	section#contact
+	
+		// HERO
+		section#hero: .grid-container: .grid-x: .cell: .hero-text-container
+			h1.l-pad-30 Contact Spoken Giants
+		
+		// Main Section (Gray background)
+		section#formContainer: .grid-container: .grid-x.grid-margin-x.white-section
+		
+			// LEFT COLUMN
+			.cell.medium-8.large-7
+				if enquirySubmitted
+					h3.text-center.t-pad-45 Thanks for getting in touch.
+				else
+					+h3("Request More Information")
+					p Please fill out the form below to reach out to a representative from Spoken Giants.
+					
+					// Main Contact Form
+					form#contactForm(method='post')
+						input(type='hidden', name='action', value='contact')
+						input(type='hidden' name='bot_trap_city' value='bot_city_usa')
+						
+						// NAME
+						.form-group(class=validationErrors.name ? 'has-error' : null)
+							label Name
+							input(type='text', name='name.full', value=formData['name.full']).form-control
+						
+						// EMAIL	
+						.form-group(class=validationErrors.email ? 'has-error' : null)
+							label Email
+							input(type='email', name='email', value=formData.email).form-control
+							
+						// PHONE (OPTIONAL)
+						.form-group
+							label Phone
+							input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
+						
+						// MESSAGE
+						.form-group(class=validationErrors.message ? 'has-error' : null)
+							label Message
+							textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+						
+						// SUBMIT
+						.form-actions(style="margin-top: 8px")
+							button(class="g-recaptcha" data-sitekey="6LdVaNQZAAAAACUlwAm2T19cUgjAabUqmJzsG_mx" data-callback='onSubmit' data-action='submit').button.caps Submit
+								i.button-icon.fa.fa-arrow-right
+							//- button(type='submit').button.caps Submit
+								i.button-icon.fa.fa-arrow-right
+			
+			// RIGHT COLUMN
+			.cell.large-1.show-for-large.rel
+				#leftLine.show-for-large
+			.cell.medium-4.large-3.rel
+				#leftLine.hide-for-large
+				
+					// No resources. They're all blocked :O

@@ -1,0 +1,25 @@
+#nextSteps{
+	
+	#nextStepBubble{
+		background-image: url('/images/hero/pattern.jpg');
+		background-size: cover;
+		position: relative;
+		#nextStepBubbleCover{
+			background-color: white;
+			height: 100%;
+			position: absolute;
+			width: 100%;
+			opacity: 0.75;
+		}
+		#nextStepBubbleInner{
+			position: relative;
+			height: 100%;
+			width: 100%;
+			opacity: 1;
+		}
+	}
+	
+	.raised-section p{
+		margin-top: 8px;
+	}
+}

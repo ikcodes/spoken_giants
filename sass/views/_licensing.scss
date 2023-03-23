@@ -1,0 +1,160 @@
+#licensing{
+	
+
+	
+	#hero{	// Flip the BG image 180deg
+		// background-image: url('/images/hero/glasses.jpg');
+    // filter: FlipH;
+    // -ms-filter: "FlipH";
+		// transform: scaleX(-1);
+		.hero-text-container{	// Flip the text back
+			// filter: FlipH;
+			// -ms-filter: "FlipH";
+			// transform: scaleX(-1);
+		}
+	}
+	
+	@media screen and(min-width: 640px) and (max-width: 1024px){
+		h3{
+			font-size: 24px;
+		}
+	}
+	
+	
+	#licensingFoldPhoto{	// COPYPASTA
+		background-image: url('/images/members/christian-finnegan.jpg');
+		background-size: cover;
+		background-position: center;
+		border: 4px solid $blue;
+		border-radius: 7px;
+		display: inline-block;
+		height: 300px;
+		transform: scaleX(-1);
+		width: 100%;
+		@media screen and (min-width: 1024px){
+			height: 360px;
+		}
+	}
+	
+	.about-fold-text{
+		letter-spacing: -0.5px;
+	}
+	
+	#licensingSubhero{
+		.cms-content{
+			p{
+				font-size: 18px;
+				margin-left: 30px;
+				@media screen and(max-width: 639px){
+					margin-left: 0;
+					text-align: justify;
+				}
+			}
+		}
+	}
+	
+	
+	#workflow{
+		.workflow-item{
+			margin-bottom: 15px;
+			margin-top: 15px;
+			@media screen and (min-width: 640px){
+				margin-bottom: 30px;
+				margin-top: 30px;
+			}
+			p{
+				display: inline-block;
+				margin-bottom: 0;
+			}
+			// BOLDED STEP!
+			&:nth-of-type(2){
+				p.number{
+					background-color: lighten($blue, 10%);
+					border-color: $black;
+					box-shadow: $box-shadow-heavy;
+					color: $black;
+					transition: all 250ms;
+				}
+				p.step{
+					background-color: lighten($blue, 10%);
+					border-color: $black;
+					box-shadow: $box-shadow-heavy;
+					color: $black;
+					transition: all 250ms;
+				}
+				.connecting-line{
+					background: $black;
+					transition: all 250ms;
+				}
+			}
+		}
+		p.number{
+			background-color: $white;
+			border: 3px solid $blue;
+			border-radius: 100%;
+			box-shadow: $box-shadow;
+			display: inline-block;
+			font-family: $heading-font;
+			font-size: 40px;
+			font-weight: bold;
+			height: 70px;
+			padding-right: 16px;
+			text-align: right;
+			transition: all 250ms;
+			width: 70px;
+			.period{
+				font-size: 30px;
+			}
+		}
+		p.step{
+			background-color: $white;
+			border-radius: 12px;
+			border: 3px solid $blue;
+			box-shadow: $box-shadow;
+			cursor: pointer;
+			font-family: $heading-font;
+			font-size: 20px;
+			height: 100%;
+			margin-left: -10px;
+			padding: 15px;
+			width: 100%;
+		}
+		.connecting-line{
+			background: $blue;
+			left: -22px;
+			height: 3px;
+			width: 14px;
+			position: absolute;
+			top: 50%;
+			transition: all 250ms;
+			@media screen and (min-width: 640px){
+				left: -32px;
+				width: 23px;
+			}
+		}
+		.workflow-item.active{
+			p.number{
+				background-color: $blue;
+				border-color: $black;
+				box-shadow: $box-shadow-heavy;
+				color: $white;
+				transition: all 250ms;
+			}
+			p.step{
+				background-color: $blue;
+				border-color: $black;
+				box-shadow: $box-shadow-heavy;
+				color: $white;
+				transition: all 250ms;
+			}
+			.connecting-line{
+				background: $black;
+				transition: all 250ms;
+			}
+		}
+	}
+	
+	.raised-section p{
+		margin-top: 8px;
+	}
+}

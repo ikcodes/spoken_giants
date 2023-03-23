@@ -1,0 +1,92 @@
+extends ../template
+include ../mixins/cta
+include ../mixins/cta2
+
+block content
+	#licensing
+		
+		//- No longer hooked up to the CMS...
+		//- #hero(style="background-image: url('"+page['image']['secure_url']+"')"): .grid-container: .grid-x
+		#hero: .grid-container: .grid-x
+			.cell: .hero-text-container
+				h1=page['title']
+		
+		// LICENSING SUBHERO
+		//==================
+		section#licensingSubhero.white-bg.tb-pad-60.mob-t-pad-30.mob-lr-pad-10: .grid-container
+			.grid-x.align-middle
+				//- Fold Photo 
+				.cell.medium-5.large-4.small-12.show-for-medium: .grid-x
+					.cell.small-12: #licensingFoldPhoto
+					.cell.small-12: p.about-fold-text <strong><span class='blue'>Christian Finnegan</span></strong>&nbsp;|&nbsp;Spoken Giants Member
+				
+				.cell.small-12.medium-auto
+					.show-for-large: +h2-lmarg(content[0]['title'])
+					.hide-for-large: +h3-lmarg(content[0]['title'])
+					.cms-content.tb-pad-15: !=content[0]['content']
+					p.b-marg-0.l-marg-30
+						a.button.large.mob-fullwidth(href="/membership#genres") Learn Our Process
+							i.button-icon.fa.fa-arrow-right
+						a.button.large.desk-l-marg-30.mob-fullwidth(href="mailto:jking@spokengiants.com?subject=Licensing With Spoken Giants") I&rsquo;d Like To License
+							i.button-icon.fa.fa-arrow-right
+
+		// MORE ABOUT LICENSING SECTION
+		section.licensingTypes
+			.licensingTypesCover
+			.licensingTypesInner: .tb-pad-30: .grid-container
+				.grid-x.grid-margin-x.align-center.tb-pad-15.mob-t-pad-30.mob-b-pad-15
+					.cell.medium-9.large-7.text-center
+						+h2-centered(content[1]['title'])
+						.cms-content: !=content[1]['content']
+				
+				.grid-x.grid-margin-x.grid-margin-y.align-center.tb-pad-30
+					.cell.small-10.medium-8.large-4: .raised-section
+						+h3(content[2]['title'])
+						!=content[2]['content']
+					
+					.cell.small-10.medium-8.large-4: .raised-section
+						+h3(content[3]['title'])
+						!=content[3]['content']
+					
+					.cell.small-10.medium-8.large-4: .raised-section
+						+h3(content[4]['title'])
+						!=content[4]['content']
+		
+		section.hide-for-medium.mob-t-pad-30.white-bg
+		+cta2()
+		
+		
+block footer_js
+	script(type='text/javascript').
+		$(function(){
+			$('p.step').hover(function(){
+				var $step = $(this).parent().parent().parent();
+				$step.addClass('active');
+			}, function(){
+				var $step = $(this).parent().parent().parent();
+				$step.removeClass('active');
+			})
+			
+			$('p.step').click(function(){
+				var $id = $(this).data('workflow-id');
+				var $step = $(this).parent().parent().parent();
+				var $explainer = $("#item-explainer-"+$id);
+				
+				$("#licensingOverlay").addClass('active');
+				$explainer.addClass("engaged");
+				$step.addClass('active');
+			})
+			
+			$('.exit-button').click(function(){
+				$("p.step").removeClass('active');
+				$("#licensingOverlay").removeClass('active');
+				$(".item-explainer").removeClass('engaged');
+			})
+			
+			// If you can click it, it's active, and it's a problem.
+			$("#licensingOverlay").click(function(){
+				$("p.step").removeClass('active');
+				$("#licensingOverlay").removeClass('active');
+				$(".item-explainer").removeClass('engaged');
+			})
+		})

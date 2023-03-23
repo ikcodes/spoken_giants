@@ -1,0 +1,80 @@
+extends ../template-landing
+include ../mixins/cta
+include ../mixins/cta2
+include ../mixins/cta3
+
+block content
+
+	- var heroImage = page['image']['secure_url'] || '/images/bg-cta.jpg'
+
+	#nextSteps
+		#hero(style='background-image: url("'+heroImage+'")'): .grid-container
+			.grid-x: .cell: .hero-text-container
+				h1=page['title']
+		
+		section.t-pad-60.b-pad-45.mob-tb-pad-45.white-bg
+		
+			// SUBHERO
+			.grid-x.grid-x.align-center
+				.cell.small-11.medium-9.large-6
+					+h2-centered(content[0]['title'])
+					.cms-content.tb-pad-15: !=content[0]['content']
+					
+		// bubbles 
+		section#nextStepBubble
+			#nextStepBubbleCover
+			#nextStepBubbleInner: .tb-pad-30: .grid-container
+				// 3 bubbles (raised-section)
+				.grid-x.grid-margin-x.grid-margin-y.align-center.tb-pad-30
+					.cell.small-10.medium-8.large-4: .raised-section
+						+h3-noshrink(content[1]['title'])
+						!=content[1]['content']
+					
+					.cell.small-10.medium-8.large-4: .raised-section
+						+h3-noshrink(content[2]['title'])
+						!=content[2]['content']
+					
+					.cell.small-10.medium-8.large-4: .raised-section
+						+h3-noshrink(content[3]['title'])
+						!=content[3]['content']
+		
+		section.hide-for-medium.mob-t-pad-30.white-bg
+		+cta3()
+		
+		
+block footer_js
+	script(type='text/javascript').
+		$(function(){
+			
+			// licensing stuff
+			//- $('p.step').hover(function(){
+			//- 	var $step = $(this).parent().parent().parent();
+			//- 	$step.addClass('active');
+			//- }, function(){
+			//- 	var $step = $(this).parent().parent().parent();
+			//- 	$step.removeClass('active');
+			//- })
+			
+			//- $('p.step').click(function(){
+			//- 	var $id = $(this).data('workflow-id');
+			//- 	var $step = $(this).parent().parent().parent();
+			//- 	var $explainer = $("#item-explainer-"+$id);
+				
+			//- 	$("#nextOverlay").addClass('active');
+			//- 	$explainer.addClass("engaged");
+			//- 	$step.addClass('active');
+			//- })
+			
+			//- $('.exit-button').click(function(){
+			//- 	$("p.step").removeClass('active');
+			//- 	$("#nextOverlay").removeClass('active');
+			//- 	$(".item-explainer").removeClass('engaged');
+			//- })
+			
+			//- // If you can click it, it's active, and it's a problem.
+			//- $("#nextOverlay").click(function(){
+			//- 	$("p.step").removeClass('active');
+			//- 	$("#nextOverlay").removeClass('active');
+			//- 	$(".item-explainer").removeClass('engaged');
+			//- })
+		})
