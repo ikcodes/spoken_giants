@@ -23,6 +23,7 @@ The use case for Keystone centers around the CMS, accessible at a private URL. T
 
 ### Other notes on Keystone.js
 - This site uses **_VERSION 4_**. V5 saw major changes so be sure to work in accordance with V4.
+- Gulp manages the build, you may need to implement webpack or another compiler to run prod builds.
 - Dev only possible with network connection.
 - CMS'd images are sourced REMOTELY w/ Cloudinary
 - To add something to the CMS, simply register and edit the data model in /models
